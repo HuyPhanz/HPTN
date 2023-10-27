@@ -1,0 +1,35 @@
+.accounts-container {
+  border-radius: 8px;
+  background-color: #fff;
+  padding-bottom: unset !important;
+  .button-list:nth-child(2) button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #e14747;
+    border: 1px solid #e14747;
+    gap: 5px;
+    &:hover,
+    &:focus,
+    &:disabled {
+      color: #e14747;
+      border: 1px solid #e14747;
+      opacity: 0.5;
+    }
+  }
+  .ant-table-pagination.ant-pagination {
+    margin: 11px 0;
+  }
+}
+
+.ant-modal-root {
+  position: absolute;
+  z-index: 1002;
+}
+.image-preview {
+  img {
+    display: inline-block;
+    width: 307px;
+  }
+}

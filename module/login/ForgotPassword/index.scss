@@ -1,0 +1,64 @@
+.container-modal-forgot {
+  font-size: $font-size-lg;
+  color: $text-color;
+  border-radius: 8px;
+  .text-title {
+    margin-top: 16px;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  .text-title-otp {
+    background: #fef2f2;
+    color: rgba(163, 46, 140, 1);
+    padding: 8px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .send-email {
+    .ant-row.ant-form-item-row {
+      width: 350px;
+    }
+    .ant-input.ant-input-status-error {
+      border-radius: 4px;
+    }
+  }
+  .ant-modal-body {
+    padding-top: 0px;
+  }
+  .ant-modal {
+    width: 510px;
+  }
+  .forgot-modal input {
+    height: 40px;
+  }
+  .image-newpass {
+    text-align: center;
+  }
+  .ant-input-affix-wrapper {
+    border: 1px solid #d7d7d7;
+    border-radius: 8px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.08);
+  }
+
+  .ant-form-item-label {
+    label {
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+  .ant-modal-footer {
+    .ant-btn {
+      border-radius: 4px;
+      width: 100px;
+    }
+  }
+  .timer {
+    font-size: 16px;
+    font-weight: 700;
+    h2 {
+      color: rgba(163, 46, 140, 1);
+    }
+  }
+}
