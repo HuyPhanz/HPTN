@@ -1,0 +1,20 @@
+.render-qr {
+  position: relative;
+  .render-qr__background {
+    background-image: url("../../../public/img/background-render-qr.png");
+    height: 100vh;
+    width: 100vw;
+    background-position: center bottom 5px;
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+  }
+
+  .render-qr__content {
+    position: absolute;
+    top: calc((100vh - 40rem) / 2);
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 10%;
+  }
+}

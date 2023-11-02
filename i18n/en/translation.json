@@ -1,0 +1,125 @@
+{
+  "account_table": {
+    "avatar": "Avatar",
+    "account": "Email",
+    "full_name": "Full name",
+    "role": "Role",
+    "phone_number": "Phone number",
+    "actions": "Action",
+    "no": "NO",
+    "name": "Name"
+  },
+  "common": {
+    "ok": "Ok",
+    "cancel": "Cancel",
+    "save": "Save",
+    "message_error": "Something is wrong. Please try again",
+    "login_facebook": "Login with Facebook",
+    "login_google": "Login with Google",
+    "login_twitter": "Login with Twitter",
+    "sign-in": "SIGN IN",
+    "sign-up": "SIGN UP",
+    "no_sign_in": "Please sign in to use this feature",
+    "token_expired": "Logon session expires",
+    "re_login": "Please log in again!",
+    "not_login": "You are not logged in",
+    "wrong": "Somethings Wrong",
+    "delete_cookie": "The browser encountered an error. Clear your browser's cookies and try again."
+  },
+  "unknown": {
+    "unknown_page": "Unknown Page",
+    "unknown_route": "Unknown Route",
+    "unknown_partner": "Unknown Partner"
+  },
+  "month": {
+    "january": "January",
+    "february": "February",
+    "march": "March",
+    "april": "April",
+    "may": "May",
+    "june": "June",
+    "july": "July",
+    "august": "August",
+    "september": "September",
+    "october": "October",
+    "november": "November",
+    "december": "December"
+  },
+  "filter": {
+    "start_date": "Start date",
+    "end_date": "End date"
+  },
+  "dashboard": {
+    "dashboard": "Dashboard",
+    "customers": "Customers",
+    "businesses": "Businesses",
+    "checked_in": "Checked in",
+    "checked_ins": "Checked-in(s)",
+    "purchased": "Purchased",
+    "total_checked_in": "Total checked-in",
+    "visitors": "Visitor(s)",
+    "checkin_without_purchase": "Checkin without purchase",
+    "checkin_with_purchase": "Checkin with purchase",
+    "daily_traffic": "Login traffic"
+  },
+  "partner": {
+    "logo": "Logo",
+    "name": "Name",
+    "address": "Address",
+    "phoneNumber": "Phone Number",
+    "category": "Category",
+    "neighbor": "Neighbor",
+    "type": "Partner Company",
+    "owner": "Owner",
+    "state": "State",
+    "check_in": "Check-ins",
+    "purchase": "Purchases",
+    "email": "Email",
+    "coordinates": "Coordinates",
+    "lat": "Lat",
+    "lon": "Lon",
+    "password": "Password",
+    "contact_us": "Contact us",
+    "about": "About",
+    "slogan": "Slogan",
+    "banner": "Banner",
+    "about_us": "About us",
+    "add_banner_button_text": "Add Banner(max 5)",
+    "import": "Import Partners",
+    "information": "Information",
+    "instagram": "Instagram",
+    "tiktok": "Tiktok"
+  },
+  "setting": {
+    "term-sevices": "Term of services",
+    "contact-help": "Contact help",
+    "switch": "Distance",
+    "checkin_radius": "Check in radius"
+  },
+  "table": {
+    "index": "No",
+    "action": "Action"
+  },
+  "modal": {
+    "add_banner": "Add Banner",
+    "ok": "Ok",
+    "cancel": "Cancel",
+    "upload": {
+      "title": "Click or drag file to this area to upload",
+      "describe": "Recommend size: 396 x 189 pixels"
+    }
+  },
+  "category": {
+    "no": "No",
+    "icon": "Icon",
+    "name": "Name",
+    "description": "Description",
+    "action": "Action"
+  },
+  "coordinates": {
+    "lat": "Lat",
+    "lon": "Lon",
+    "latitude": "Latitude",
+    "longitude": "Longitude"
+  }
+}

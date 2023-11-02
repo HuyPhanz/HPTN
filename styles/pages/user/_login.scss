@@ -1,0 +1,33 @@
+.user_login_page {
+  min-height: 90vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  &:before {
+    content: " ";
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+  }
+
+  .auth-card {
+    height: 400px;
+    width: 350px;
+    border: none;
+  }
+
+  .comment {
+    font-size: 8pt;
+    font-style: italic;
+  }
+
+  ::placeholder {
+    color: red;
+    opacity: 0.5;
+  }
+}

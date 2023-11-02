@@ -1,0 +1,100 @@
+.container-filter {
+  justify-content: space-between;
+  display: flex;
+  .filter-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    .ant-input-affix-wrapper {
+      border-radius: 8px;
+      border: 0.5px solid #dde4f0;
+      .ant-input-prefix {
+        color: rgba(90, 106, 207, 1);
+      }
+    }
+    .ant-input-search .ant-input:focus {
+      border-color: #cd9efd !important;
+      box-shadow: 0 0 0 1px rgba(205, 158, 253, 0.5);
+    }
+    .ant-input-group-addon button {
+      height: 35px !important;
+      background-color: #cd9efd;
+      color: white;
+      border: unset;
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+      box-shadow: none;
+    }
+    .ant-input-group-addon button:hover {
+      background-color: rgba(205, 158, 253, 0.8);
+    }
+    .ant-select-selector {
+      height: 36px !important;
+      width: 200px !important;
+      border-radius: 4px !important;
+      border: 1px solid var(--neutral-5, #d9d9d9) !important;
+      background: var(--neutral-1, #fff);
+    }
+  }
+  .button-list button {
+    border-radius: 4px !important;
+    background: var(--neutral-1, #fff);
+    height: 36px;
+    box-shadow: 0px 2px 1px 0px rgba(64, 72, 82, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      margin-right: 5px;
+    }
+    &:focus {
+      opacity: unset !important;
+    }
+  }
+  .button-list .add {
+    border: 0.5px solid rgba(125, 42, 108, 1);
+    color: rgba(163, 46, 140, 1);
+    &:hover,
+    &:focus {
+      opacity: 0.5;
+    }
+  }
+  .button-list .import {
+    border: 0.5px solid rgb(85, 78, 166);
+    color: rgba(107, 97, 223, 1);
+    &:hover,
+    &:focus {
+      opacity: 0.5;
+    }
+  }
+  .button-list .delete {
+    border: 0.5px solid rgba(225, 71, 71, 1);
+    color: rgba(225, 71, 71, 1);
+    &:hover,
+    &:focus {
+      opacity: 0.5;
+    }
+    .ant-image {
+      display: flex;
+      margin-right: 5px;
+    }
+  }
+  .ant-btn[disabled] {
+    color: white;
+    border-color: #d9d9d9;
+    background: #c7c7c7;
+    text-shadow: none;
+    box-shadow: none;
+    &:hover {
+      color: white;
+      border-color: #d9d9d9;
+      background: #c7c7c7;
+      text-shadow: none;
+      box-shadow: none;
+      opacity: unset !important;
+    }
+    img {
+      filter: brightness(10);
+    }
+  }
+}

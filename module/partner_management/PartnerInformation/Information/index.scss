@@ -1,0 +1,101 @@
+.information {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  background: white;
+  border-radius: 16px;
+  padding: 16px 32px;
+  .info {
+    .ant-input-disabled {
+      border: 1px solid #ccc;
+      background-color: rgb(244 244 244);
+      color: rgb(137 137 137);
+    }
+    .isPreview .ant-input-disabled {
+      background: transparent;
+      color: black;
+      border-color: transparent;
+    }
+  }
+  .ant-input-affix-wrapper {
+    &:before {
+      content: unset;
+    }
+  }
+  .ant-select-selector {
+    min-height: 32px;
+  }
+
+  .about-us {
+    width: 100%;
+    padding: 16px 32px;
+    background-color: white;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .title {
+      font-size: 24px;
+      font-weight: 700;
+      color: rgba(107, 97, 223, 1);
+    }
+
+    // .subtitle {
+    //   .ant-input {
+    //     color: rgba(107, 97, 223, 1) !important;
+    //   }
+    //   .ant-input-disabled {
+    //     color: rgba(107, 97, 223, 1) !important;
+    //   }
+    // }
+
+    .ant-input-disabled {
+      border-color: transparent;
+      padding-left: 0;
+    }
+
+    .ant-form-item {
+      label {
+        flex-direction: row-reverse;
+        color: rgba(163, 174, 208, 1);
+        text-transform: uppercase;
+        margin-right: 4px;
+      }
+      ::after {
+        display: none;
+      }
+      .text-color {
+        color: #6b61df;
+        text-align: justify;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
+      .content-color {
+        text-align: justify;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 190%; /* 30.4px */
+        color: #6a6a6a;
+      }
+    }
+  }
+
+  @media screen and (max-width: $grid-breakpoints-lg) {
+    flex-direction: column;
+    .contact-us {
+      width: 100% !important;
+      .platform-list {
+        flex-direction: row;
+      }
+    }
+
+    .about-us {
+      width: 100% !important;
+    }
+  }
+}

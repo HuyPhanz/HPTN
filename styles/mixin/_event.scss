@@ -1,0 +1,28 @@
+.no-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+.hover-pointer {
+  &:hover {
+    cursor: pointer !important;
+  }
+}
+
+.hover-grab {
+  &:hover {
+    cursor: grab !important;
+  }
+}
+
+.hover-image {
+  cursor: pointer;
+}
+
+.hover-image:hover {
+  opacity: 70%;
+}

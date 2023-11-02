@@ -1,0 +1,42 @@
+.content {
+  padding: 10px;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0px 20px;
+  @media (min-width: $grid-breakpoints-md) {
+    padding: 0px 20px;
+  }
+  @media (min-width: $grid-breakpoints-xl) {
+    padding: 0px 20px;
+  }
+  z-index: 0;
+
+  .bg-fuchsia-500.text-white.py-1.px-2.rounded {
+    padding: 0.5rem;
+  }
+
+  .content-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    font-weight: 400;
+    padding-top: 16px;
+    font-size: 26px;
+    svg {
+      path {
+        stroke: #ffffff;
+      }
+    }
+  }
+
+  .content-container {
+    background-color: white;
+    min-height: calc(100vh - 72px);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 16px 16px 0 16px;
+  }
+}

@@ -1,0 +1,87 @@
+.modal-change-password {
+  .ant-modal-content {
+    border-radius: 8px;
+  }
+  .ant-modal {
+    transform: translate(0, -50%) !important;
+    top: 50%;
+    width: 28% !important;
+    max-height: 80%;
+  }
+  .ant-modal-footer {
+    padding: 12px 18px;
+    text-align: center;
+    .ant-btn {
+      height: 48px !important;
+      width: 100%;
+      border-radius: 8px !important;
+    }
+  }
+
+  .ant-modal-body {
+    padding: 16px;
+    font-size: 14px;
+    line-height: 1.5715;
+    word-wrap: break-word;
+  }
+
+  .image-change {
+    text-align: center;
+  }
+
+  .text-change {
+    color: #2b2b2b;
+    text-align: center;
+    font-size: 2vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 48px */
+    margin-top: 16px;
+  }
+
+  .container-change {
+    margin-top: 16px;
+    padding: 0px;
+    .ant-form-item {
+      margin-bottom: 1vh;
+    }
+
+    .text-password .ant-row {
+      display: block !important;
+    }
+
+    .text-password {
+      color: #2b2b2b;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 150%; /* 24px */
+      .ant-form-item-explain-error {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+        margin-top: 8px;
+      }
+    }
+    .input-change-password {
+      border-radius: 8px;
+      border: 1px solid #d7d7d7;
+      background: #fff;
+      box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.08);
+      height: 48px;
+      padding: 5px 16px 5px 12px;
+    }
+  }
+}
+
+.modal-success-container {
+  .ant-modal-confirm .ant-modal-confirm-btns {
+    text-align: center;
+  }
+  button {
+    height: 48px !important;
+    width: 100%;
+    border-radius: 8px !important;
+  }
+}

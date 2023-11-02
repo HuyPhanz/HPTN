@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next-js Core
 
-## Getting Started
+## Install dependencies
 
-First, run the development server:
+1. Install Node version 18
+2. Install npm
+3. Install yarn
+   `npm install -g yarn`
+4. Install dependencies
+   `yarn bootstrap`
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Local Develop
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Cope file `.env.development` to `.env.development.local`
+2. Edit `.env.development.local` file to fit environment
+3. `yarn dev`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Run production
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Build using `yarn build`
+2. Run production `yarn start`
 
-## Learn More
+## Run production with Docker
 
-To learn more about Next.js, take a look at the following resources:
+1. Build your container: `docker-compose build`
+2. Run your container: `docker-compose up`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Documentation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Tailwindcss Docs `https://tailwindcss.com/docs`
+2. Formik Docs `https://formik.org/docs/overview`
+3. React-query Docs `https://react-query.tanstack.com/overview`
+4. Ant Design Docs `https://ant.design/components/overview/`
+5. Sass Docs `https://sass-lang.com/documentation`
+6. Axios Docs `https://axios-http.com/docs/intro`
+7. React Docs `https://reactjs.org/docs/getting-started.html`
+8. Next.js Docs `https://nextjs.org/docs`
+9. Moment.js Docs `https://momentjs.com/docs/`
+10. Lodash Docs `https://lodash.com/docs/`
+11. Redux Docs `https://redux.js.org/introduction/getting-started`
+12. Class Validator Docs `https://www.npmjs.com/package/class-validator#validation-decorators`
+13. React i18next Docs `https://react.i18next.com/`
+14. Redux toolkit Docs `https://redux-toolkit.js.org/usage/usage-guide`
+15. Typescript Docs `https://www.typescriptlang.org/docs/`
 
-## Deploy on Vercel
+# Plugins
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Prettier `https://plugins.jetbrains.com/plugin/10456-prettier`
+2. i18n support `https://plugins.jetbrains.com/plugin/12981-i18n-support`
+3. Tailwindcss `https://plugins.jetbrains.com/plugin/15321-tailwind-css`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Team
+
+- `@nguyenhung`
+
+## Development rules
+
+1. Never use branch master for anything
+2. Only work on branch you in charge of
+3. Always merge develop to your branch before commit
+4. Run `npm run pre-commit` to check if your code have any problem before commit
+5. Must clean code before create merge request

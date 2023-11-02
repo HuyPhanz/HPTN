@@ -1,0 +1,17 @@
+.main {
+  width: 100%;
+  &.sidebar-open {
+    width: calc(100% - $sidebar-width);
+  }
+
+  &.sidebar-close {
+    width: calc(100% - $sidebar-width-close);
+  }
+  padding-left: 0;
+  //@media (max-width: $grid-breakpoints-xl) {
+  //  width: 100%;
+  //  &.sidebar-open {
+  //    width: 100%;
+  //  }
+  //}
+}

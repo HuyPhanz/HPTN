@@ -1,0 +1,43 @@
+.number-section {
+  margin-bottom: 16px;
+  .ant-row {
+    height: fit-content;
+    .box {
+      display: flex;
+      align-items: center;
+      padding: 28px 24px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 16px 40px 0 rgba(154, 170, 207, 0.25);
+      height: 100%;
+      .box-icon {
+        .ant-image {
+          width: 55px;
+        }
+      }
+
+      .box-content {
+        flex: 1;
+        padding-left: 16px;
+        h2 {
+          font-size: 16px;
+          font-weight: 400;
+          color: #6f767e;
+          overflow-wrap: break-word;
+        }
+
+        h1 {
+          font-size: 20px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  @media (min-width: 768px) and (max-width: 1200px) {
+    .ant-col-md-12 {
+      display: block;
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+}

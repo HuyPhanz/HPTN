@@ -1,0 +1,78 @@
+$active-color: #0c61f2;
+$background-color: #f3f3f4;
+
+.test_playground_page {
+  .builder-menu {
+    display: flex;
+    position: absolute;
+    width: auto;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+
+    .menu-handle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 22px;
+      width: 100%;
+      padding-bottom: 5px;
+    }
+
+    .builder-menu-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding: 5px;
+      border-top: 1px solid black;
+
+      &:hover {
+        background: $active-color;
+        color: white;
+        cursor: pointer;
+      }
+
+      .builder-menu-item-icon {
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+.test_playground_page-builder_element_picker_container {
+  .ant-popover-inner-content {
+    padding: 0;
+  }
+
+  .builder-element-picker {
+    display: grid;
+    width: 300px;
+    grid-template-columns: 50% 50%;
+
+    //Add border except two first div
+    & > div:nth-child(n + 3) {
+      border-top: 1px solid $background-color;
+    }
+
+    .builder-element-picker-item {
+      display: flex;
+      flex-direction: row;
+      padding: 5px 10px;
+
+      &:hover {
+        color: $active-color;
+        background: $background-color;
+        cursor: pointer;
+      }
+
+      .element-icon-container {
+        width: 30px;
+      }
+
+      .element-title {
+      }
+    }
+  }
+}

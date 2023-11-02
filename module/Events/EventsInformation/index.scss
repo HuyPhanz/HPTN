@@ -1,0 +1,392 @@
+.event-information-page {
+  position: relative;
+  .event-information-info {
+    display: flex;
+    gap: 16px;
+
+    .info-section {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 70%;
+
+      .event-info {
+        background-color: white;
+        padding: 28px 36px;
+        border-radius: 16px;
+        position: relative;
+
+        .conner-image {
+          position: absolute;
+          right: 4px;
+
+          @media screen and (max-width: $grid-breakpoints-md) {
+            display: none;
+          }
+        }
+
+        .header-event {
+          display: grid;
+          grid-template-columns: 1.5fr 1fr;
+          width: calc(100% - 135px);
+
+          .banner-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 30px;
+            .ant-image {
+              width: 100%;
+              //height: 283px;
+
+              img {
+                //height: 100%;
+                object-fit: contain;
+              }
+            }
+            .object-cover {
+              width: 23vw;
+              height: 247px;
+            }
+            .blank-banner {
+              border-radius: 8px;
+              border: 1px solid #a32e8c;
+              height: 100%;
+              width: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #a32e8c;
+            }
+            .ant-upload-list-picture-card-container {
+              width: 100%;
+              height: 100%;
+            }
+            .ant-image {
+              width: 23vw !important;
+              //height: 100% !important;
+            }
+
+            .ant-upload-list-picture-card {
+              width: 23vw;
+              height: 247px;
+              .ant-upload.ant-upload-select-picture-card {
+                width: 100%;
+                height: 100%;
+              }
+              .ant-upload-select-picture-card {
+                border: 1px solid #d9d9d9;
+                &:hover {
+                  border-color: #1890ff;
+                }
+              }
+            }
+          }
+          form {
+            .ant-form-item-control-input-content:first-child {
+              display: flex;
+              align-items: center;
+              p {
+                flex: 1 1 33%;
+              }
+            }
+            .ant-form-item-label {
+              padding: unset;
+            }
+          }
+          .participants-quantity {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+          }
+          .edit-event {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+          }
+          .ant-input-disabled {
+            padding: 0;
+          }
+        }
+        @media (max-width: 1400px) {
+          .header-event {
+            width: calc(100% - 59px);
+          }
+          .input-title {
+            font-size: 12px;
+          }
+        }
+        .info {
+          &.isPreview {
+            .ant-input,
+            .ant-input-password {
+              border-color: transparent !important;
+            }
+
+            .ant-input-suffix {
+              display: none;
+            }
+            .ant-form-item-label {
+              padding-bottom: 0;
+            }
+          }
+
+          .input-title {
+            font-size: 14px;
+            color: var(--secondary-grey-600, #a3aed0);
+            text-transform: uppercase;
+          }
+          @media (max-width: 1400px) {
+            .input-title {
+              font-size: 13px;
+            }
+          }
+          .detail-data {
+            font-size: 16px;
+            font-weight: 400;
+            color: #2b3674;
+            border-radius: 8px;
+          }
+        }
+      }
+      .event-description {
+        background-color: white;
+        padding: 28px 36px;
+        border-radius: 16px;
+        position: relative;
+        height: 100%;
+        .info {
+          &.isPreview {
+            .ant-input,
+            .ant-input-password {
+              border-color: transparent !important;
+            }
+
+            .ant-input-suffix {
+              display: none;
+            }
+          }
+          textarea {
+            height: 40vh;
+            text-align: justify;
+          }
+          .input-title {
+            font-size: 14px;
+            color: var(--secondary-grey-600, #a3aed0);
+            text-transform: uppercase;
+          }
+          .ant-input:last-child {
+            height: 275px;
+          }
+        }
+        .required::after {
+          display: inline-block;
+          margin-left: 4px;
+          color: #ff4d4f;
+          font-size: 14px;
+          font-family: SimSun, sans-serif;
+          line-height: 1;
+          content: "*";
+        }
+      }
+      .event-qr {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        .item-qr {
+          background-color: white;
+          width: 100%;
+          border-radius: 16px;
+          padding: 20px 36px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          .qr {
+            margin-top: 20px;
+            text-align: center;
+            p {
+              font-size: 20px;
+              font-weight: 500;
+              margin-top: 5px;
+            }
+          }
+        }
+      }
+    }
+
+    .ant-input,
+    .ant-input-password {
+      width: 100%;
+      margin: 0;
+      resize: none;
+    }
+
+    .ant-input-disabled,
+    .ant-input-affix-wrapper-disabled {
+      cursor: text;
+      background: transparent;
+      color: black;
+    }
+  }
+  .event-prize {
+    background-color: white;
+    margin-top: 16px;
+    padding: 28px 36px;
+    border-radius: 16px;
+    min-height: 262px;
+    .prize-header {
+      display: flex;
+      justify-content: space-between;
+      h1 {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 16px;
+      }
+      button {
+        background-color: unset;
+        border: unset;
+        box-shadow: unset;
+        text-shadow: unset;
+        &:focus {
+          color: #a32e8c;
+        }
+        &:hover {
+          color: #40a9ff;
+        }
+      }
+    }
+    .prize-list {
+      .prize-item {
+        display: flex;
+        padding-right: 16px;
+        .prize-item-info {
+          flex: 1 1 70%;
+          width: calc(100% - 400px);
+          padding-left: 10px;
+          h1 {
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 26px;
+            margin-bottom: unset;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 1; /* number of lines to show */
+            line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow-wrap: break-word;
+          }
+          p {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 26px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 4; /* number of lines to show */
+            line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow-wrap: break-word;
+          }
+        }
+      }
+      .image-container {
+        position: relative;
+        width: 50%;
+        overflow: hidden;
+        height: 149px;
+        .overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.6); /* Màu nền mờ mờ */
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          opacity: 0;
+          transition: all 0.3s;
+          .overlay-content {
+            background: rgba(255, 255, 255, 0.3490196078);
+            border-radius: 100px;
+            padding: 3px 8px;
+            margin-right: 5px;
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            &:hover {
+              opacity: 0.7;
+            }
+          }
+        }
+      }
+      .image-container:hover .overlay {
+        opacity: 1;
+      }
+    }
+  }
+
+  .ant-form-item,
+  .ant-form-item-label {
+    label {
+      flex-direction: row-reverse;
+      color: rgba(163, 174, 208, 1);
+      text-transform: uppercase;
+    }
+    .ant-form-item-required::before {
+      margin-left: 4px;
+    }
+  }
+}
+.ant-modal-root {
+  position: absolute;
+  z-index: 1002;
+}
+
+.ant-upload-list-item-actions {
+  display: flex;
+  align-items: center;
+  a {
+    background: #ffffff59;
+    border-radius: 100px;
+    padding: 3px 2px;
+    margin-right: 5px;
+  }
+  button {
+    background: #ffffff59;
+    height: 28px !important;
+    width: 28px !important;
+    padding: 1px !important;
+    border-radius: 100px !important;
+    &:hover {
+      background: #ffffff59;
+    }
+  }
+}
+
+.detail-modal {
+  p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: left;
+  }
+  textarea,
+  input {
+    background-color: white !important;
+    border-radius: 8px;
+    color: black !important;
+  }
+}
+
+.loading {
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  opacity: 0.8;
+}
+.ant-upload.ant-upload-select-picture-card {
+  border: 1px solid #d9d9d9;
+}

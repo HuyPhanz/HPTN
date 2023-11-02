@@ -1,0 +1,38 @@
+.line-chart-section {
+  width: 100%;
+  padding: 16px 32px;
+  background: white;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+
+  .overall-stats {
+    h2 {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+
+  .line-chart {
+    height: 20vh;
+    min-height: 280px;
+  }
+  .filter {
+    .ant-picker {
+      width: 120px;
+      background-color: rgba(254, 251, 254, 1);
+      border-radius: 8px;
+      border-color: rgba(240, 221, 238, 1);
+      .anticon {
+        color: rgba(163, 46, 140, 1);
+      }
+    }
+  }
+}

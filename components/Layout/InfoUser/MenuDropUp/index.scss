@@ -1,0 +1,118 @@
+.dropup-container {
+  position: relative;
+  width: 100%;
+
+  .items-center {
+    border-radius: 2px;
+    background: #f3f3f3;
+    padding: 10px 16px;
+    &:hover {
+      background: #f1e8ff;
+    }
+    &:focus {
+      background-color: #f1e8ff;
+    }
+  }
+
+  .text-user-profile {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .btn-user {
+    display: flex;
+  }
+
+  .user-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    -webkit-line-clamp: 1;
+    width: 106px;
+    color: #575757;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    margin-top: 2px;
+  }
+
+  .ant-btn {
+    width: 100%;
+    height: auto;
+    border: none;
+  }
+
+  .ant-btn:hover {
+    text-decoration: none;
+    opacity: 0.9;
+  }
+
+  .dropup-menu {
+    list-style: none;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    border-radius: 4px;
+    width: 100%;
+    box-shadow: 0px -4px 10px 0px rgba(0, 0, 0, 0.15);
+    transition: height 0.3s ease;
+
+    .item-Dropup {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      background-color: #fff;
+    }
+  }
+
+  .content {
+    max-height: 0;
+    transition: max-height 0.3s ease;
+  }
+
+  .slide-down {
+    transition: max-height 0.3s ease;
+    max-height: 80px;
+  }
+
+  &.openMenuAuth {
+    //.toggle-button {
+    //  display: none;
+    //}
+    max-height: 80px;
+    transition: max-height 0.3s ease;
+  }
+
+  &.closeMenuAuth {
+    //.toggle-button {
+    //  display: none;
+    //}
+    max-height: 0;
+    transition: max-height 0.3s ease;
+  }
+
+  .dropup-menu.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .item-Dropup {
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  .item-Dropup:hover {
+    background-color: rgba(255, 246, 253, 1);
+    color: rgba(163, 46, 140, 1);
+    border-left: 5px solid var(--w-bs-1, #a32e8c);
+  }
+  .margin-left-4 {
+    margin-right: 4px;
+  }
+}

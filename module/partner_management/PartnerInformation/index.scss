@@ -1,0 +1,80 @@
+.partner-information-page {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #a32e8c;
+  }
+  .ant-tabs-ink-bar {
+    background: #a32e8c;
+  }
+
+  .info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .ant-input,
+  .ant-input-password {
+    width: 100%;
+    margin: 0;
+    resize: none;
+  }
+
+  .ant-input-disabled,
+  .ant-input-affix-wrapper-disabled {
+    cursor: text;
+    background: transparent;
+    color: black;
+    border-color: transparent;
+  }
+
+  .ant-select-disabled {
+    cursor: text;
+    background: transparent;
+    color: black;
+    border-color: transparent;
+
+    .ant-select-selector {
+      cursor: text !important;
+      background: transparent !important;
+      color: black !important;
+      border-color: transparent !important;
+    }
+
+    .ant-select-arrow {
+      display: none;
+    }
+  }
+
+  .ant-select-multiple {
+    .ant-select-selection-item {
+      border: none;
+      border-radius: 5px;
+      background: #ffeefb;
+      color: rgba(163, 46, 140, 1);
+    }
+  }
+
+  .ant-input-disabled:hover {
+    border-color: transparent;
+  }
+
+  .ant-form-item,
+  .ant-form-item-label {
+    label {
+      flex-direction: row-reverse;
+      color: rgba(163, 174, 208, 1);
+      text-transform: uppercase;
+    }
+    ::after {
+      display: none;
+    }
+    ::before {
+      margin-left: 4px;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.input-modal-container {
+  .label-item {
+    justify-content: left;
+    align-items: center;
+    display: flex;
+    font-weight: 500;
+    .require {
+      color: $red-color;
+    }
+  }
+}
