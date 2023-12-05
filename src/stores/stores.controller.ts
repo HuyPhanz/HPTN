@@ -1,23 +1,60 @@
-import { Controller, Get, Post, Param, Body } from '@nestjs/common';
-import { StoresService } from './stores.service';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  ParseIntPipe,
+  Patch,
+  Post,
+  Query,
+} from '@nestjs/common';
+
+import { CreateStoreDto, UpdateStoreDto } from '../utils/types';
+import { StoreService } from './stores.service';
 
 @Controller('stores')
-export class StoresController {
-  constructor(private storesService: StoresService) {}
+export class StoreController {
+  constructor(private storeService: StoreService) {}
 
-  @Get()
-  getAllStores() {
-    return this.storesService.getAllStores();
+  @Get('')
+  getUsersWithMeta(
+    @Query('page') page: number = 1,
+    @Query('perpage') perPage: number = 10,
+  ) {
+    return this.storeService.getStoreWithMeta(page, perPage);
+  }
+
+  @Get('/unassigned')
+  getUnassignedStores() {
+    return this.storeService.getUnassginedStore();
   }
 
   @Get(':id')
-  getStoreById(@Param('id') id: string) {
-    return this.storesService.getStoreById(id);
+  findStoreById(@Param('id', ParseIntPipe) id: number) {
+    return this.storeService.findStoreById(id);
+  }
+
+  @Get('/all')
+  getStores() {
+    return this.storeService.findStores();
   }
 
   @Post()
-  createStore(@Body() store) {
-    this.storesService.createStore(store);
-    return 'Store created successfully';
+  createStore(@Body() createStoreDto: CreateStoreDto) {
+    return this.storeService.createStore(createStoreDto);
+  }
+
+  @Patch(':id')
+  updateStoreById(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateStoreDto: UpdateStoreDto,
+  ) {
+    return this.storeService.updateStore(id, updateStoreDto);
+  }
+
+  @Delete(':id')
+  deleteStoreById(@Param('id', ParseIntPipe) id: number) {
+    return this.storeService.deleteStore(id);
   }
 }

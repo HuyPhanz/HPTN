@@ -1,25 +1,44 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
-import { StoresModule } from './stores/stores.module';
 import { EventsModule } from './events/events.module';
-import { StatisticsModule } from './statistics/statistics.module';
-import { ProductsService } from './products/products.service';
-import { ProductsController } from './products/products.controller';
-import { PointsService } from './points/points.service';
-import { PointsController } from './points/points.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './typeorm/entities/User';
+import { UsersModule } from './users/users.module';
+import { Profile } from './typeorm/entities/Profile';
+import { Store } from './typeorm/entities/Store';
+import { Product } from './typeorm/entities/Product';
+import { Category } from './typeorm/entities/Category';
+import { Events } from './typeorm/entities/Event';
+import { StoresModule } from './stores/stores.module';
+import { CategoryModule } from './category/category.module';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
-    UserModule,
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: 'Huy1722001#',
+      database: 'event_manager',
+      entities: [User, Profile, Store, Product, Category, Events],
+      synchronize: true,
+    }),
+    UsersModule,
+    // PassportModule.register({ defaultStrategy: 'bearer' }),
+    // UserModule,
     AuthModule,
-    StoresModule,
+    // StoresModule,
     EventsModule,
-    StatisticsModule,
+    StoresModule,
+    CategoryModule,
+    ProductModule,
+    // StatisticsModule,
   ],
-  controllers: [AppController, ProductsController, PointsController],
-  providers: [AppService, ProductsService, PointsService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

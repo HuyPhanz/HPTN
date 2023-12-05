@@ -1,12 +1,28 @@
 import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { UserService } from '../user/user.service';
-import { PassportModule } from '@nestjs/passport';
+import { UsersModule } from '../users/users.module';
+import { JwtModule } from '@nestjs/jwt';
+import { AuthController } from './auth.controller';
+import { AuthGuard } from './auth.guard';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
-    PassportModule.register({ defaultStrategy: 'jwt' }), // You can use other strategies like local or OAuth
+    UsersModule,
+    JwtModule.register({
+      global: true,
+      secret: 'huyphan',
+      signOptions: { expiresIn: '1y' },
+    }),
   ],
-  providers: [AuthService, UserService],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+    AuthService,
+  ],
+  controllers: [AuthController],
+  exports: [AuthService],
 })
 export class AuthModule {}
