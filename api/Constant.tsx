@@ -56,27 +56,34 @@ const API_PATH = {
   POST_CHANGE_STATUS_CUSTOMER: "/users/change-status",
   DELETE_CUSTOMER: "/users/delete-user",
   /* Api get Staff */
-  GET_LIST_STAFF: "/staff/index",
-  DELETE_STAFF: "staff/multiple-delete",
+  GET_LIST_STAFF: "/users",
+  DELETE_STAFF: "/users",
 
   /* Api event */
-  GET_LIST_EVENT: "/index-event",
-  CREATE_EVENT: "/create-event",
-  DETAIL_EVENT: (id: string | number): string => `/show-event/${id}`,
-  UPDATE_EVENT: (id: string | number): string => `/update-event/${id}`,
+  GET_LIST_EVENT: "/events",
+  CREATE_EVENT: "/events",
+  DETAIL_EVENT: (id: string | number): string => `/events/${id}`,
+  UPDATE_EVENT: (id: string | number): string => `/events/${id}`,
   EDIT_BANNER_EVENT: "/events/update-image",
   DELETE_EVENT: "/delete-event",
   EXPORT_EVENT: "/events/export",
   GENERATE_QR_CODE: "/generate-qrcode",
   GET_LIST_PARTICIPANTS: (id: string | number): string =>
     `/events/${id}/list-participants`,
-  GET_LIST_BUSINESS_QR: (id: string | number): string =>
-    `/events/list-stores/${id}`,
+  GET_LIST_STORE_ASSIGNED: (id: string | number): string =>
+    `/events/${id}/list-stores`,
+  GET_LIST_STORE_UNASSIGNED: (id: string | number): string =>
+    `/events/${id}/list-stores-unassigned`,
+  STORE_TO_EVENT: (
+    idStore: string | number,
+    idEvent: string | number
+  ): string => `/events/${idEvent}/stores/${idStore}`,
   /* Api store */
-  STORE_LIST: "/index-store",
-  STORE_CREATE: "/create-store",
-  STORE_DETAIL: (id: string | number): string => `/show-store/${id}`,
-  STORE_UPDATE: (id: string | number): string => `/update-store/${id}`,
+  STORE_LIST: "/stores",
+  UNASSIGNED_STORE_LIST: "/stores/unassigned",
+  STORE_CREATE: "/stores",
+  STORE_DETAIL: (id: string | number): string => `/stores/${id}`,
+  STORE_UPDATE: (id: string | number): string => `/stores/${id}`,
   EMAIL_STORE: (id: string | number): string => `/send-account/${id}`,
   STORE_BANNER_UPDATE: "/store/update-image",
   STORE_DELETE: "/multiple-delete",

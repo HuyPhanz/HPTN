@@ -1,10 +1,9 @@
-import {IAccountRole, ITableResponse} from "@app/types";
+import {ITableResponse} from "@app/types";
 import {fetcher} from "@app/api/Fetcher";
 import Constant from "@app/api/Constant";
 import {Modal, notification, UploadFile} from "antd";
 import moment from "moment/moment";
 import {ExportExcel} from "@app/api/ApiExport";
-import store from "@app/redux/store";
 
 export interface IStoreTableQuery {
   status?: number;
@@ -18,40 +17,21 @@ export interface IStoreTableResponse {
   id: number;
   key?: number;
   name: string;
-  logo?: string;
-  state_id: number;
-  email?: string;
-  phone?: number;
-  owner?: string;
-  category: {id: number; name: string}[];
-  state: {id: number; name: string};
+  status: string;
+  user?: any;
+  category: any;
+  event: any;
 }
 
 export interface IStoreDetailResponse {
   id: number;
-  logo: string;
+  key?: number;
   name: string;
-  email: string;
-  phone: string;
-  lat: string;
-  lon: string;
-  owner: string;
-  address: string;
-  tiktok: string;
-  instagram: string;
-  introduction_title: string;
-  introduction: string;
-  state_id: string;
-  category: {id: number; name: string}[];
-  banner: {
-    file_id: number;
-    id: number;
-    image_data: string;
-  }[];
-  state: {
-    id: number;
-    name: string;
-  };
+  status: string;
+  user?: any;
+  category: any;
+  event: any;
+  products: any[];
 }
 
 export interface IEventForm {
@@ -75,11 +55,11 @@ export interface IEventForm {
 function getListStore(
   params?: IStoreTableQuery
 ): Promise<ITableResponse<IStoreTableResponse[]>> {
-  if (store.getState().user.role === IAccountRole.STORE) {
-    return new Promise((resolve, reject) => {
-      reject();
-    });
-  }
+  // if (store.getState().user.role !== "admin") {
+  //   return new Promise((resolve, reject) => {
+  //     reject();
+  //   });
+  // }
   return fetcher<ITableResponse<IStoreTableResponse[]>>({
     url: Constant.API_PATH.STORE_LIST,
     method: "get",
@@ -87,14 +67,24 @@ function getListStore(
   });
 }
 
-function createStore(data: FormData): Promise<any> {
+function getListUnassignedStore(
+  params?: IStoreTableQuery
+): Promise<IStoreTableResponse[]> {
+  return fetcher<IStoreTableResponse[]>({
+    url: Constant.API_PATH.UNASSIGNED_STORE_LIST,
+    method: "get",
+    params: params,
+  });
+}
+
+function createStore(data: any): Promise<any> {
   return fetcher<any>({
     url: Constant.API_PATH.STORE_CREATE,
     method: "post",
     data: data,
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
+    // headers: {
+    //   "Content-Type": "multipart/form-data",
+    // },
   });
 }
 
@@ -105,14 +95,14 @@ function getStoreDetail(id: string | number): Promise<IStoreDetailResponse> {
   });
 }
 
-function updateStore(id: string | number, data: FormData): Promise<any> {
+function updateStore(id: string | number, data: any): Promise<any> {
   return fetcher<any>({
     url: Constant.API_PATH.STORE_UPDATE(id),
-    method: "post",
+    method: "patch",
     data: data,
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
+    // headers: {
+    //   "Content-Type": "multipart/form-data",
+    // },
   });
 }
 
@@ -207,4 +197,5 @@ export default {
   sendMail,
   handleExportExcel,
   handleImport,
+  getListUnassignedStore,
 };

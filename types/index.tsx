@@ -82,6 +82,7 @@ export interface IProfile {
 export interface IAccountInfo {
   display_name?: string;
   role?: IAccountRole;
+  storeId?: number;
   token?: string;
   avatar?: string;
   id?: number;
@@ -176,6 +177,8 @@ export interface IPartnerForm {
   introduction?: string;
   lat?: string;
   lon?: string;
+  user?: any;
+  event?: any;
 }
 
 export interface IFilterGroupProps {
@@ -229,15 +232,13 @@ export interface IfilterGroupProps {
   }[];
 }
 
-export interface IResponseDataStaff {
+export interface IResponseDataAccounts {
   id?: number;
-  image_data?: UploadFile;
   email?: string;
-  fullname?: string;
-  role_id?: number;
-  phone?: string;
   password?: string;
-  avatar?: string;
+  role?: string;
+  store?: any;
+  profile?: any;
 }
 
 export interface IEventPrize {

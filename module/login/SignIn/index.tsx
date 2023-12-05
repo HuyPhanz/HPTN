@@ -1,6 +1,6 @@
 import "./index.scss";
 import {Formik} from "formik";
-import {Form, Image, Row, Col, Button} from "antd";
+import {Form, Image, Row, Col} from "antd";
 import {ButtonSubmit} from "@app/components/ButtonSubmit";
 import {useMutation} from "react-query";
 import ApiUser from "@app/api/ApiUser";
@@ -10,11 +10,7 @@ import {useRouter} from "next/router";
 import Config from "@app/config";
 import {IAccountInfo} from "@app/types";
 import {ModalForgotPassword} from "../ForgotPassword";
-import {
-  getValidationSchema,
-  // getValidationSchema,
-  ILoginForm,
-} from "@app/module/login/SignIn/form-config";
+import {ILoginForm} from "@app/module/login/SignIn/form-config";
 import {Input} from "formik-antd";
 import FormItem from "@app/components/FormItem";
 import {useState} from "react";
@@ -35,11 +31,11 @@ export function SignIn(): JSX.Element {
       {
         onSuccess: (res: IAccountInfo) => {
           dispatch(loginUser({...res}));
-          if (res.role === "store") {
-            router.push(Config.PATHNAME.STORE);
-          } else {
-            router.push(Config.PATHNAME.HOME);
-          }
+          // if (res.role === "store") {
+          // router.push(Config.PATHNAME.STORE);
+          // } else {
+          router.push(Config.PATHNAME.HOME);
+          // }
           setSubmitting(false);
         },
         onError: () => {
@@ -53,9 +49,9 @@ export function SignIn(): JSX.Element {
     <>
       <Formik
         initialValues={{email: "", password: ""}}
-        validateOnChange={false}
-        validateOnBlur
-        validationSchema={getValidationSchema()}
+        // validateOnChange={false}
+        // validateOnBlur
+        // validationSchema={getValidationSchema()}
         onSubmit={handleLogin}
       >
         {({isSubmitting, handleSubmit}): JSX.Element => (
@@ -112,14 +108,6 @@ export function SignIn(): JSX.Element {
                 isSubmitting={isSubmitting}
                 classRow="log-in-text"
               />
-              <div className="copy-right">
-                <Button
-                  type="link"
-                  onClick={() => window.open("https://tinasoft.vn")}
-                >
-                  Powered by Tinasoft{" "}
-                </Button>
-              </div>
             </Form>
           </div>
         )}

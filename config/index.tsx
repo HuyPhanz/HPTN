@@ -4,7 +4,7 @@ const STORE_NAME = "state";
 // NETWORK
 const NETWORK_CONFIG = {
   HOST: process.env.NEXT_PUBLIC_APP_URL,
-  API_BASE_URL: process.env.NEXT_PUBLIC_APP_URL + "/api/v2",
+  API_BASE_URL: process.env.NEXT_PUBLIC_APP_URL,
   API_APP_URL: process.env.NEXT_PUBLIC_APP_URL + "/api",
   BASE_URL: process.env.NEXT_PUBLIC_WEB_URL,
   TIMEOUT: 30000,

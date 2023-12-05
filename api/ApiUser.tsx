@@ -12,6 +12,7 @@ export interface ILoginResponse {
   display_name?: string;
   role?: IAccountRole;
   token?: string;
+  storeId?: number;
 }
 
 export interface IParamsGetUser {

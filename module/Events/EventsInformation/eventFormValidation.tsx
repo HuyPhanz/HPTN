@@ -12,6 +12,6 @@ export function eventFormValidation(): SchemaOf<IEventFormValidation> {
       .min(4, "The name contains at least 4 letters!")
       .max(50, "The name contains max 50 characters!")
       .required("The name is require!"),
-    description: Yup.string().required("Description is require!"),
+    content: Yup.string().required("Content is require!"),
   });
 }

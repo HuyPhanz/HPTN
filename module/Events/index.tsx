@@ -267,30 +267,14 @@ export function Events(): JSX.Element {
       ),
     },
     {
-      title: "Image",
-      dataIndex: "logo",
-      width: 104,
-      render: (val) => (
-        <Image
-          src={val ?? "/img/error-image.png"}
-          alt="logo"
-          width={60}
-          height={60}
-          className="object-contain"
-          preview={false}
-          fallback="/img/error-image.png"
-        />
-      ),
-    },
-    {
-      title: t("partner.name"),
+      title: "Name",
       dataIndex: "name",
       width: 200,
       render: (val) => <div className="limit-content">{val}</div> ?? "-",
     },
     {
-      title: "Description",
-      dataIndex: "description",
+      title: "Content",
+      dataIndex: "content",
       width: 300,
       render: (val) => <div className="limit-content">{val}</div> ?? "-",
     },
@@ -307,41 +291,23 @@ export function Events(): JSX.Element {
       render: (val) => (val ? moment(val).format("MM-DD-YYYY") : "-"),
     },
     {
-      title: "Participants",
-      dataIndex: "participants_count",
-      key: "sort_participants",
-      width: 100,
-      render: (val) => val ?? "-",
-      sorter: true,
+      title: "Description",
+      dataIndex: "description",
+      width: 300,
+      render: (val) => <div className="limit-content">{val}</div> ?? "-",
     },
-    {
-      title: "Check-ins",
-      key: "sort_checkin",
-      dataIndex: "non_buy_count",
-      width: 100,
-      render: (val) => val ?? "-",
-      sorter: true,
-    },
-    {
-      title: "Purchases",
-      key: "sort_purchased",
-      dataIndex: "buy_count",
-      width: 100,
-      render: (val) => val ?? "-",
-      sorter: true,
-    },
-    {
-      title: "Status",
-      dataIndex: "status",
-      filters: statusFilter,
-      width: 100,
-      render: (val) =>
-        val ? (
-          <p style={{color: "#22c55e"}}>Active</p>
-        ) : (
-          <p style={{color: "#dc2626"}}>Inactive</p>
-        ),
-    },
+    // {
+    //   title: "Status",
+    //   dataIndex: "status",
+    //   filters: statusFilter,
+    //   width: 100,
+    //   render: (val) =>
+    //     val ? (
+    //       <p style={{color: "#22c55e"}}>Active</p>
+    //     ) : (
+    //       <p style={{color: "#dc2626"}}>Inactive</p>
+    //     ),
+    // },
     {
       title: t("table.action"),
       dataIndex: "id",

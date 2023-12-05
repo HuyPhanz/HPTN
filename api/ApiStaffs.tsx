@@ -1,21 +1,23 @@
 import {fetcher} from "./Fetcher";
-import {IResponseDataStaff} from "../types";
+import {IResponseDataAccounts} from "../types";
 import Constant from "@app/api/Constant";
 
-export interface IParamsGetListStaff {
+export interface IParamsGetListAccount {
   page?: number;
   search?: string;
   perpage?: number;
   role_id?: number[] | null;
 }
 
-export interface IResponseStaff {
+export interface IResponseAccounts {
   current_page?: number;
-  data: IResponseDataStaff[];
+  data: IResponseDataAccounts[];
   total?: number;
 }
 
-function getListStaff(params?: IParamsGetListStaff): Promise<IResponseStaff> {
+function getListAccount(
+  params?: IParamsGetListAccount
+): Promise<IResponseAccounts> {
   return fetcher({
     url: Constant.API_PATH.GET_LIST_STAFF,
     method: "get",
@@ -23,17 +25,14 @@ function getListStaff(params?: IParamsGetListStaff): Promise<IResponseStaff> {
   });
 }
 
-function deleteStaff(param: {
-  ids: (number | undefined)[];
-}): Promise<IResponseStaff> {
+function deleteStaff(param: {id: number}): Promise<IResponseAccounts> {
   return fetcher({
-    url: Constant.API_PATH.DELETE_STAFF,
+    url: `${Constant.API_PATH.DELETE_STAFF}/${param.id}`,
     method: "delete",
-    params: param,
   });
 }
 
 export default {
-  getListStaff,
+  getListAccount,
   deleteStaff,
 };

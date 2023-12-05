@@ -18,19 +18,19 @@ function DropupButton(): JSX.Element {
   const userInfo = useSelector((store: IRootState) => store?.user);
   const [isModalOpenLogout, setIsModalOpenLogout] = useState(false);
   const [isLoadingLogout, setIsLoadingLogout] = useState(false); // Thêm state mới
-  const [hoveredChangePassword, setHoveredChangePassword] = useState(false);
+  // const [hoveredChangePassword, setHoveredChangePassword] = useState(false);
   const [hoveredLogout, setHoveredLogout] = useState(false);
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleMouseOverChangePassword = () => {
-    setHoveredChangePassword(true);
-  };
-
-  const handleMouseOutChangePassword = () => {
-    setHoveredChangePassword(false);
-  };
+  // const handleMouseOverChangePassword = () => {
+  //   setHoveredChangePassword(true);
+  // };
+  //
+  // const handleMouseOutChangePassword = () => {
+  //   setHoveredChangePassword(false);
+  // };
 
   const handleMouseOverLogout = () => {
     setHoveredLogout(true);
@@ -46,9 +46,9 @@ function DropupButton(): JSX.Element {
     }
   };
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
+  // const showModal = () => {
+  //   setIsModalOpen(true);
+  // };
 
   const handleOk = () => {
     setIsModalOpen(false);
@@ -72,25 +72,25 @@ function DropupButton(): JSX.Element {
   return (
     <div className="dropup-container" ref={dropupRef}>
       <div className={`dropup-menu ${isOpen ? "slide-down" : "content"}`}>
-        <div
-          onClick={showModal}
-          className="item-Dropup"
-          style={{justifyContent: isOpenSideBar ? "left" : "center"}}
-          role="button"
-          tabIndex={0}
-          onMouseOver={handleMouseOverChangePassword}
-          onMouseOut={handleMouseOutChangePassword}
-        >
-          {hoveredChangePassword ? (
-            <Icon icon="change_password_active" size={21} />
-          ) : (
-            <Icon icon="change_password_inactive" size={21} />
-          )}
+        {/* <div */}
+        {/*  onClick={showModal} */}
+        {/*  className="item-Dropup" */}
+        {/*  style={{justifyContent: isOpenSideBar ? "left" : "center"}} */}
+        {/*  role="button" */}
+        {/*  tabIndex={0} */}
+        {/*  onMouseOver={handleMouseOverChangePassword} */}
+        {/*  onMouseOut={handleMouseOutChangePassword} */}
+        {/* > */}
+        {/*  {hoveredChangePassword ? ( */}
+        {/*    <Icon icon="change_password_active" size={21} /> */}
+        {/*  ) : ( */}
+        {/*    <Icon icon="change_password_inactive" size={21} /> */}
+        {/*  )} */}
 
-          {isOpenSideBar && (
-            <p className="pl-4 text-user-profile">Change Password</p>
-          )}
-        </div>
+        {/*  {isOpenSideBar && ( */}
+        {/*    <p className="pl-4 text-user-profile">Change Password</p> */}
+        {/*  )} */}
+        {/* </div> */}
         <div
           onClick={() => setIsModalOpenLogout(true)}
           className="item-Dropup"

@@ -1,0 +1,47 @@
+.modal-import-partner {
+  .ant-modal-content {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+}
+.partner-table {
+  .ant-table-filter-trigger {
+    flex: 1;
+    color: #ffffff;
+    margin-right: 50px;
+    &:hover {
+      color: #ffffff;
+      background: unset;
+    }
+    .anticon-filter {
+      display: flex;
+      width: 100%;
+      // flex-direction: row-reverse;
+    }
+  }
+
+  .ant-table-cell-scrollbar:not([rowspan]) {
+    box-shadow: unset;
+  }
+
+  .list-category {
+    overflow-x: auto;
+    padding: 4px 0;
+  }
+
+  .ant-table-thead > tr > th,
+  .ant-table-tbody > tr > td,
+  .ant-table tfoot > tr > th,
+  .ant-table tfoot > tr > td {
+    padding: 8px 8px;
+  }
+
+  .ant-table-filter-trigger.active {
+    color: #1890ff;
+  }
+}
+.ant-table-filter-dropdown,
+.ant-table-filter-dropdown-btns {
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}

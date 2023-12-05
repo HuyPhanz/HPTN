@@ -8,7 +8,7 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
-      width: 70%;
+      width: 100%;
 
       .event-info {
         background-color: white;
@@ -28,7 +28,7 @@
         .header-event {
           display: grid;
           grid-template-columns: 1.5fr 1fr;
-          width: calc(100% - 135px);
+          width: 50%;
 
           .banner-wrapper {
             display: flex;

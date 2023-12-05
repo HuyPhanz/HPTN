@@ -13,36 +13,36 @@
       background: #a32e8cc4;
     }
   }
-  .file-upload-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .ant-upload-list-picture-card-container,
-    .ant-upload-select-picture-card {
-      width: 90%;
-      height: 232px;
-      margin: unset;
-    }
-    .ant-upload-select-picture-card {
-      border: 1px solid #d9d9d9;
-      &:hover {
-        border-color: #1890ff;
-      }
-    }
-    .ant-upload-list.ant-upload-list-picture-card {
-      width: 350px;
-    }
-  }
-  #register {
-    display: grid;
-    max-width: unset !important;
-    grid-template-columns: 1fr 1.2fr;
-    .ant-form-item:first-child {
-      grid-row: 1/6;
-      display: flex;
-      align-items: center;
-    }
-  }
+  //.file-upload-container {
+  //  display: flex;
+  //  align-items: center;
+  //  justify-content: center;
+  //  .ant-upload-list-picture-card-container,
+  //  .ant-upload-select-picture-card {
+  //    width: 90%;
+  //    height: 232px;
+  //    margin: unset;
+  //  }
+  //  .ant-upload-select-picture-card {
+  //    border: 1px solid #d9d9d9;
+  //    &:hover {
+  //      border-color: #1890ff;
+  //    }
+  //  }
+  //  .ant-upload-list.ant-upload-list-picture-card {
+  //    width: 350px;
+  //  }
+  //}
+  //#register {
+  //  display: grid;
+  //  max-width: unset !important;
+  //  grid-template-columns: 1fr 1.2fr;
+  //  .ant-form-item:first-child {
+  //    grid-row: 1/6;
+  //    display: flex;
+  //    align-items: center;
+  //  }
+  //}
   form input {
     border-radius: 8px;
     &:disabled {

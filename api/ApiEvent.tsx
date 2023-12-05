@@ -1,4 +1,4 @@
-import {IEventPrize, ITableResponse} from "@app/types";
+import {ITableResponse} from "@app/types";
 import {fetcher} from "@app/api/Fetcher";
 import Constant from "@app/api/Constant";
 import Config from "../config";
@@ -16,19 +16,11 @@ export interface IEventTableQuery {
 
 export interface IEventTableResponse {
   id: number;
-  key?: number;
   name: string;
+  content: string;
   description?: string;
-  logo?: {
-    file_id?: number;
-    image_data?: string;
-  };
-  status: number;
   start_date: string;
   end_date: string;
-  participants_count: number;
-  non_buy_count: number;
-  buy_count: number;
 }
 export interface IBannerEvent {
   id?: number;
@@ -36,21 +28,12 @@ export interface IBannerEvent {
   file_id?: number;
 }
 export interface IEventDetailResponse {
-  id?: number;
-  name?: string;
+  id: number;
+  name: string;
+  content: string;
   description?: string;
-  start_date?: string;
-  end_date?: string;
-  participants_count?: number;
-  business_count?: number;
-  banner?: IBannerEvent[];
-  status?: number;
-  checkin?: string;
-  purchased?: string;
-  logo?: string;
-  purchased_code?: number;
-  checkin_code?: number;
-  prizes?: IEventPrize[];
+  start_date: string;
+  end_date: string;
 }
 
 export interface IGenerateQrCodeParam {
@@ -109,9 +92,9 @@ function createEvent(data: any): Promise<any> {
     url: Constant.API_PATH.CREATE_EVENT,
     method: "post",
     data: data,
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
+    // headers: {
+    //   "Content-Type": "multipart/form-data",
+    // },
   });
 }
 
@@ -124,15 +107,15 @@ function getEventDetail(id: number): Promise<IEventDetailResponse> {
 
 function updateEvent(param: {
   id: string | number;
-  data: FormData;
+  data: any;
 }): Promise<IEventDetailResponse> {
   return fetcher<any>({
     url: Constant.API_PATH.UPDATE_EVENT(param.id),
-    method: "post",
+    method: "patch",
     data: param.data,
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
+    // headers: {
+    //   "Content-Type": "multipart/form-data",
+    // },
   });
 }
 
@@ -182,13 +165,29 @@ function getListParticipants(
   });
 }
 
-function getListBusinessQr(
+function getListStoreAssigned(
   id: string,
   param: IStoreTableQuery
 ): Promise<ITableResponse<IStoreQrTableResponse[]>> {
   if (id) {
     return fetcher({
-      url: Constant.API_PATH.GET_LIST_BUSINESS_QR(id),
+      url: Constant.API_PATH.GET_LIST_STORE_ASSIGNED(id),
+      method: "get",
+      params: param,
+    });
+  }
+  return new Promise((resolve, reject) => {
+    reject();
+  });
+}
+
+function getListStoreUnassigned(
+  id: string,
+  param: IStoreTableQuery
+): Promise<ITableResponse<IStoreQrTableResponse[]>> {
+  if (id) {
+    return fetcher({
+      url: Constant.API_PATH.GET_LIST_STORE_UNASSIGNED(id),
       method: "get",
       params: param,
     });
@@ -207,5 +206,6 @@ export default {
   deleteEvent,
   generateQrcode,
   getListParticipants,
-  getListBusinessQr,
+  getListStoreAssigned,
+  getListStoreUnassigned,
 };

@@ -1,1 +1,1 @@
-export {Dashboard as default} from "@app/module/dashboard";
+export {Events as default} from "@app/module/Events";

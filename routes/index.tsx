@@ -7,6 +7,7 @@ import {useRouter} from "next/router";
 import LoginComponent from "@app/pages/login";
 import ApiUser from "@app/api/ApiUser";
 import {IAccountRole} from "@app/types";
+import store from "@app/redux/store";
 
 export default function Routes({
   Component,
@@ -14,7 +15,7 @@ export default function Routes({
   router,
 }: AppProps): JSX.Element | null {
   const routerNext = useRouter();
-  const userRole = ApiUser.getUserRole();
+  const {user} = store.getState();
 
   const login = routerNext.pathname === Config.PATHNAME.LOGIN;
 
@@ -36,17 +37,17 @@ export default function Routes({
     return false;
   };
 
-  const isUserRoleAuthorized = (): boolean => {
-    const userRole = ApiUser.getUserRole();
-    if (userRole) {
-      for (const route of RouteList) {
-        if (router.pathname === route.path) {
-          return !!route.role?.includes(userRole);
-        }
-      }
-    }
-    return false;
-  };
+  // const isUserRoleAuthorized = (): boolean => {
+  //   const userRole = ApiUser.getUserRole();
+  //   if (userRole) {
+  //     for (const route of RouteList) {
+  //       if (router.pathname === route.path) {
+  //         return !!route.role?.includes(userRole);
+  //       }
+  //     }
+  //   }
+  //   return false;
+  // };
 
   const isPrivateRoute = (): boolean | undefined => {
     for (const route of RouteList) {
@@ -87,13 +88,14 @@ export default function Routes({
   if (isPrivateRoute()) {
     if (ApiUser.isLogin()) {
       if (isRouteRequireRole()) {
-        if (!isUserRoleAuthorized()) {
-          if (userRole === IAccountRole.STORE) {
-            router.push(Config.PATHNAME.STORE);
-          } else {
-            router.push(Config.PATHNAME.HOME);
-          }
-          return null;
+        if (user?.role === IAccountRole.STAFF) {
+          router.push(`/partners/${user?.storeId}`);
+        } else {
+          return (
+            <DashboardLayout>
+              <Component {...pageProps} />
+            </DashboardLayout>
+          );
         }
       }
       return (
@@ -105,12 +107,7 @@ export default function Routes({
     return goToLogin();
   }
   const is404Page = router.route === "/404";
-  if (
-    routerNext.pathname === "/events/[id]/listParticipants" &&
-    (userRole === IAccountRole.STORE || userRole === IAccountRole.STAFF)
-  ) {
-    routerNext.push("/404");
-  }
+
   if (!ApiUser.isLogin()) {
     if (is404Page) {
       return <Component {...pageProps} />;

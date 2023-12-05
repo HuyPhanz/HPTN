@@ -1,8 +1,7 @@
 import "./index.scss";
 import {useTranslation} from "react-i18next";
 import {Button, Spin, Tabs} from "antd";
-import AboutUs from "@app/module/partner_management/PartnerInformation/Information/AboutUs";
-import Information from "@app/module/partner_management/PartnerInformation/Information/Information";
+import Information from "@app/module/stores/StoreInformation/Information/Information";
 
 export interface IPartnerInformationSection {
   loading: boolean;
@@ -32,11 +31,11 @@ export default function InfoSection(
         />
       ),
     },
-    {
-      label: t("About"),
-      key: "about_us",
-      children: <AboutUs isPreview={isPreview} setPreview={setPreview} />,
-    },
+    // {
+    //   label: "Products",
+    //   key: "products",
+    //   children: "",
+    // },
   ];
 
   return (

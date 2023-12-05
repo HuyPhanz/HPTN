@@ -2,104 +2,81 @@ import "./index.scss";
 
 import {PlusOutlined} from "@ant-design/icons";
 import {useState} from "react";
-import {AccountsTable} from "module/Accounts/StaffsTable";
-import {IResponseDataStaff} from "@app/types";
+import {AccountsTable} from "module/Accounts/AcountTable";
+import {IResponseDataAccounts} from "@app/types";
 import FilterGroup from "@app/components/FilterGroup";
-import {ModalAccounts} from "@app/module/Staffs/Modal";
-import {Image, notification} from "antd";
-import {useMutation, useQuery} from "react-query";
+import {ModalAccounts} from "@app/module/Accounts/Modal";
+import {useQuery} from "react-query";
 import ApiStaffs, {
-  IParamsGetListStaff,
-  IResponseStaff,
+  IParamsGetListAccount,
+  IResponseAccounts,
 } from "@app/api/ApiStaffs";
-import ConfirmModal from "@app/components/ConfirmModal";
+// import ConfirmModal from "@app/components/ConfirmModal";
 
 export function Accounts(): JSX.Element {
-  const deleteStaff = useMutation(ApiStaffs.deleteStaff);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState(false);
-  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
-  const [disableDeleteButton, setDisableDeleteButton] = useState(true);
-  const [selectedRows, setSelectedRows] = useState<(number | undefined)[]>([]);
 
   const [initialAccountModal, setInitialAccountModal] =
-    useState<IResponseDataStaff>({
+    useState<IResponseDataAccounts>({
       id: undefined,
       email: "",
-      image_data: undefined,
-      password: "",
-      fullname: "",
-      phone: "",
-      role_id: undefined,
+      password: undefined,
+      role: undefined,
+      store: undefined,
+      profile: undefined,
     });
   const [paginationParam, setPaginationParam] = useState({
     current: 1,
     pageSize: 100,
   });
 
-  const [paramListStaffs, setParamListStaffs] = useState<IParamsGetListStaff>({
-    search: "",
-    role_id: null,
-    page: 1,
-    perpage: 100,
-  });
+  const [paramListAccounts, setParamListAccounts] =
+    useState<IParamsGetListAccount>({
+      // search: "",
+      // role: null,
+      page: 1,
+      perpage: 100,
+    });
 
-  const listStaffs = useQuery<IResponseStaff>(
-    ["list-staffs", paramListStaffs],
-    () => ApiStaffs.getListStaff(paramListStaffs)
+  const listAccounts = useQuery<IResponseAccounts>(
+    ["list-account", paramListAccounts],
+    () => ApiStaffs.getListAccount(paramListAccounts)
   );
-
-  const multipleDelete = () => {
-    deleteStaff.mutate(
-      {ids: selectedRows},
-      {
-        onSuccess: () => {
-          notification.success({
-            message: "Delete successfully!",
-          });
-          setIsConfirmModalOpen(false);
-          setDisableDeleteButton(true);
-          listStaffs.refetch();
-        },
-      }
-    );
-  };
+  console.log("listAccount: ", listAccounts);
+  // const multipleDelete = () => {
+  //   deleteStaff.mutate(
+  //     {id: selectedRows},
+  //     {
+  //       onSuccess: () => {
+  //         notification.success({
+  //           message: "Delete successfully!",
+  //         });
+  //         setIsConfirmModalOpen(false);
+  //         // setDisableDeleteButton(true);
+  //         listAccounts.refetch();
+  //       },
+  //     }
+  //   );
+  // };
 
   const listButton = [
     {
-      title: "Add Staff",
+      title: "Add Account",
       onClick: () => {
         setModalType(false);
         setInitialAccountModal({
           id: undefined,
           email: "",
           password: "",
-          fullname: "",
-          phone: "",
-          role_id: undefined,
-          image_data: undefined,
+          role: undefined,
+          store: undefined,
+          profile: undefined,
         });
         setIsModalOpen(true);
       },
       startIcon: <PlusOutlined />,
       type: "add",
-    },
-    {
-      title: "Delete",
-      onClick: () => {
-        setIsConfirmModalOpen(true);
-      },
-      startIcon: (
-        <Image
-          src="/img/delete-x.svg"
-          width={20}
-          height={20}
-          alt="delete"
-          preview={false}
-        />
-      ),
-      type: "delete",
-      isDisabled: disableDeleteButton,
     },
   ];
   return (
@@ -110,7 +87,7 @@ export function Accounts(): JSX.Element {
           haveInputSearch
           placeholderSearch="Search"
           onSearch={(value: string) => {
-            setParamListStaffs((prevParam) => {
+            setParamListAccounts((prevParam: any) => {
               return {
                 ...prevParam,
                 search: value,
@@ -133,14 +110,14 @@ export function Accounts(): JSX.Element {
         setInitialAccountModal={(values) => {
           setInitialAccountModal(values);
         }}
-        onSelectRows={(selectedRows) => setSelectedRows(selectedRows)}
+        // onSelectRows={(selectedRows) => setSelectedRows(selectedRows)}
         handleOpen={() => setIsModalOpen(true)}
-        setDisableDeleteButton={(value) => setDisableDeleteButton(value)}
-        listStaffs={listStaffs.data}
-        refetch={listStaffs.refetch}
-        isLoading={listStaffs.isLoading || listStaffs.isRefetching}
-        paramListStaffs={paramListStaffs}
-        setParamListStaffs={(value) => setParamListStaffs(value)}
+        // setDisableDeleteButton={(value) => setDisableDeleteButton(value)}
+        listStaffs={listAccounts.data}
+        refetch={listAccounts.refetch}
+        isLoading={listAccounts.isLoading || listAccounts.isRefetching}
+        paramListStaffs={paramListAccounts}
+        setParamListStaffs={(value) => setParamListAccounts(value)}
         paginationParam={paginationParam}
         setPaginationParam={(value) => setPaginationParam(value)}
       />
@@ -152,14 +129,7 @@ export function Accounts(): JSX.Element {
         }}
         onCancel={() => setIsModalOpen(false)}
         initialAccountModal={initialAccountModal}
-        refetch={listStaffs.refetch}
-      />
-      <ConfirmModal
-        type="Delete"
-        isModalOpen={isConfirmModalOpen}
-        setIsModalOpen={(value) => setIsConfirmModalOpen(value)}
-        confirmAction={() => multipleDelete()}
-        isLoading={deleteStaff.isLoading}
+        refetch={listAccounts.refetch}
       />
     </div>
   );

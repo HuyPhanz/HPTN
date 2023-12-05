@@ -2,11 +2,11 @@ import "./index.scss";
 import {Space, Table, Image, notification, Tag} from "antd";
 import type {ColumnsType} from "antd/es/table";
 import {useTranslation} from "react-i18next";
-import {IResponseDataStaff} from "@app/types";
+import {IResponseDataAccounts} from "@app/types";
 import Config from "@app/config";
 import ApiStaffs, {
-  IParamsGetListStaff,
-  IResponseStaff,
+  IParamsGetListAccount,
+  IResponseAccounts,
 } from "@app/api/ApiStaffs";
 import {useState} from "react";
 import ConfirmModal from "@app/components/ConfirmModal";
@@ -15,14 +15,14 @@ import {IRootState} from "@app/redux/store";
 import {useMutation} from "react-query";
 
 interface IAccountTableProps {
-  onSelectRows: (selectedRows: (number | undefined)[]) => void; // TODO cần setup lại type để selectedRows k phải nhận undefined
+  // onSelectRows: (selectedRows: (number | undefined)[]) => void;
   handleOpen: () => void;
   setModal: () => void;
-  setInitialAccountModal: (value: IResponseDataStaff) => void;
-  setDisableDeleteButton: (value: boolean) => void;
-  listStaffs: IResponseStaff | undefined;
-  paramListStaffs: IParamsGetListStaff;
-  setParamListStaffs: (value: IParamsGetListStaff) => void;
+  setInitialAccountModal: (value: IResponseDataAccounts) => void;
+  // setDisableDeleteButton: (value: boolean) => void;
+  listStaffs: IResponseAccounts | undefined;
+  paramListStaffs: IParamsGetListAccount;
+  setParamListStaffs: (value: IParamsGetListAccount) => void;
   paginationParam: {current: number; pageSize: number};
   setPaginationParam: (value: any) => void;
   refetch: () => void;
@@ -33,46 +33,46 @@ export function AccountsTable(props: IAccountTableProps): JSX.Element {
   const {t} = useTranslation();
   const userId = useSelector((store: IRootState) => store?.user.id);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
-  const [idDelete, setIdDelete] = useState<number[]>([]);
+  const [idDelete, setIdDelete] = useState<number>(0);
 
   const showConfirmModal = () => {
     setIsConfirmModalOpen(true);
   };
 
-  const dataTable = props.listStaffs?.data?.map((item) => ({
+  const dataTable = props.listStaffs?.data?.map((item: any) => ({
     ...item,
     key: item.id,
   }));
 
   const deleteStaff = useMutation(ApiStaffs.deleteStaff);
 
-  function handleEditAccount(record: IResponseDataStaff) {
+  function handleEditAccount(record: IResponseDataAccounts) {
     props.setModal();
     props.setInitialAccountModal(record);
     props.handleOpen();
   }
 
-  const rowSelection = {
-    onChange: (
-      selectedRowKeys: React.Key[],
-      selectedRows: IResponseDataStaff[]
-    ) => {
-      if (selectedRowKeys.length === 0) {
-        props.setDisableDeleteButton(true);
-      } else {
-        props.setDisableDeleteButton(false);
-      }
-      props.onSelectRows(selectedRows.map((staff) => staff.id));
-    },
-    getCheckboxProps: (record: IResponseDataStaff) => ({
-      disabled: record.id === userId, // Column configuration not to be checked
-      name: record.fullname,
-    }),
-  };
+  // const rowSelection = {
+  //   onChange: (
+  //     selectedRowKeys: React.Key[],
+  //     selectedRows: IResponseDataStaff[]
+  //   ) => {
+  //     if (selectedRowKeys.length === 0) {
+  //       props.setDisableDeleteButton(true);
+  //     } else {
+  //       props.setDisableDeleteButton(false);
+  //     }
+  //     props.onSelectRows(selectedRows.map((staff) => staff.id));
+  //   },
+  //   getCheckboxProps: (record: IResponseDataStaff) => ({
+  //     disabled: record.id === userId, // Column configuration not to be checked
+  //     name: record.fullname,
+  //   }),
+  // };
 
-  const handleDelete = (ids: number[]) => {
+  const handleDelete = (id: number) => {
     deleteStaff.mutate(
-      {ids},
+      {id},
       {
         onSuccess: () => {
           notification.success({
@@ -85,7 +85,7 @@ export function AccountsTable(props: IAccountTableProps): JSX.Element {
     );
   };
 
-  const columns: ColumnsType<IResponseDataStaff> = [
+  const columns: ColumnsType<IResponseDataAccounts> = [
     {
       title: "No",
       dataIndex: "id",
@@ -100,59 +100,64 @@ export function AccountsTable(props: IAccountTableProps): JSX.Element {
         </h1>
       ),
     },
+    // {
+    //   title: t("account_table.avatar"),
+    //   dataIndex: "avatar",
+    //   key: "avatar",
+    //   width: "10%",
+    //   render: (_, record) => (
+    //     <Image
+    //       src={record?.avatar ? record?.avatar : "/img/avatar/avatar.jpg"}
+    //       alt=""
+    //       width={60}
+    //       height={60}
+    //       preview={false}
+    //       fallback="/img/avatar/avatar.jpg"
+    //     />
+    //   ),
+    // },
+    // {
+    //   title: t("account_table.full_name"),
+    //   dataIndex: "fullname",
+    //   key: "fullname",
+    //   width: "20%",
+    // },
     {
-      title: t("account_table.avatar"),
-      dataIndex: "avatar",
-      key: "avatar",
-      width: "10%",
-      render: (_, record) => (
-        <Image
-          src={record?.avatar ? record?.avatar : "/img/avatar/avatar.jpg"}
-          alt=""
-          width={60}
-          height={60}
-          preview={false}
-          fallback="/img/avatar/avatar.jpg"
-        />
-      ),
-    },
-    {
-      title: t("account_table.full_name"),
-      dataIndex: "fullname",
-      key: "fullname",
-      width: "20%",
-    },
-    {
-      title: t("account_table.account"),
+      title: t("Email"),
       dataIndex: "email",
       key: "email",
-      width: "25%",
     },
+    // {
+    //   title: t("account_table.phone_number"),
+    //   dataIndex: "phone",
+    //   key: "phone",
+    //   width: "20%",
+    // },
     {
-      title: t("account_table.phone_number"),
-      dataIndex: "phone",
-      key: "phone",
-      width: "20%",
-    },
-    {
-      title: t("account_table.role"),
+      title: t("Role"),
       key: "role_id",
-      dataIndex: "role_id",
-      width: "10%",
+      dataIndex: "role",
       filters: [
         {
           text: "Admin",
-          value: 1,
+          value: "admin",
         },
         {
           text: "Staff",
-          value: 3,
+          value: "staff",
         },
       ],
-      render: (val) => <h1>{val === 1 ? "Admin" : "Staff"}</h1>,
+      render: (val) => <h1 className="capitalize">{val}</h1>,
+    },
+
+    {
+      title: t("Store"),
+      dataIndex: ["store", "name"],
+      key: "store",
     },
     {
       title: t("account_table.actions"),
+      // align: "left",
       key: "action",
       dataIndex: "id",
       fixed: "right",
@@ -175,7 +180,7 @@ export function AccountsTable(props: IAccountTableProps): JSX.Element {
               height={30}
               alt="logo"
               onClick={() => {
-                setIdDelete([val]);
+                setIdDelete(val);
                 showConfirmModal();
               }}
               preview={false}
@@ -202,7 +207,6 @@ export function AccountsTable(props: IAccountTableProps): JSX.Element {
     <>
       <Table
         className="accounts-content"
-        rowSelection={rowSelection}
         columns={columns}
         dataSource={dataTable}
         pagination={pagination}

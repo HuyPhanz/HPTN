@@ -1,1 +1,1 @@
-export {PartnerInformation as default} from "@app/module/partner_management/PartnerInformation";
+export {PartnerInformation as default} from "@app/module/stores/StoreInformation";
